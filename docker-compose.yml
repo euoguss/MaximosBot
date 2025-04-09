@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: wpp_bot_waha
+    restart: always
+    ports:
+      - "3000:3000"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wpp_bot_api
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - ./chroma_data:/app/chroma_data
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+    depends_on:
+      - waha
+
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - nextcloud_data:/var/www/html
+
+  db:
+    image: mariadb
+    container_name: nextcloud_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_PASSWORD: nextcloud
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  nextcloud_data:
+  db_data:

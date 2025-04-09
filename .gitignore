@@ -1,0 +1,48 @@
+# Environment variables and secrets
+/.env
+.env.local
+.env.*
+
+# Dependencies
+node_modules/
+venv/
+env/
+__pycache__/
+*.py[cod]
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Build and distribution
+dist/
+build/
+*.pyc
+
+# API keys and credentials
+config.json
+credentials.json
+
+# Model files and large data
+*.model
+*.h5
+*.pkl
+/models/
+/data/
+
+# Testing
+coverage/
+.coverage
+.pytest_cache/
+
+# Temporary files
+tmp/
+temp/
