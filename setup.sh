@@ -3,23 +3,28 @@
 echo "🔧 Atualizando pacotes..."
 apt update && apt upgrade -y
 
-echo "🐳 Verificando Docker..."
+echo "🐳 Instalando Docker (se necessário)..."
 if ! command -v docker &> /dev/null; then
-    echo "⚙️ Instalando Docker..."
     curl -fsSL https://get.docker.com -o get-docker.sh
     sh get-docker.sh
 fi
 
-echo "🔧 Verificando Docker Compose..."
+echo "🔧 Instalando Docker Compose (se necessário)..."
 if ! command -v docker-compose &> /dev/null; then
-    echo "⚙️ Instalando Docker Compose..."
     apt install docker-compose -y
 fi
 
-echo "📁 Criando pasta do projeto..."
-mkdir -p /opt/meu_bot && cd /opt/meu_bot
+echo "📁 Clonando o projeto do GitHub via HTTPS..."
+mkdir -p /opt/maximos_bot && cd /opt/maximos_bot
+git clone -b main https://github.com/euoguss/MaximosBot.git .
 
-echo "📦 Copie seu projeto para /opt/meu_bot com SCP ou Git"
-echo "➡️ Ex: scp -r ./meu_projeto root@srv788024.hstgr.cloud:/opt/meu_bot"
+echo "🔐 Certifique-se de que o arquivo .env foi criado com as variáveis necessárias."
+echo "   Use: scp .env root@srv788024.hstgr.cloud:/opt/maximos_bot/.env"
 
-echo "✅ Depois execute: docker-compose up --build -d"
+echo "🚀 Subindo containers com Docker Compose..."
+docker-compose up -d --build
+
+echo "✅ Tudo pronto! Acesse:"
+echo "📦 Waha: http://srv788024.hstgr.cloud:3000"
+echo "🧠 API:  http://srv788024.hstgr.cloud:5000"
+
