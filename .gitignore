@@ -36,7 +36,6 @@ credentials.json
 *.h5
 *.pkl
 /models/
-/data/
 
 # Testing
 coverage/

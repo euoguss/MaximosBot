@@ -21,7 +21,7 @@ class AIBot:
 
     def __build_rentriever(self):
         persist_directory = "/app/chroma_data"
-        embedding = HuggingFaceEmbeddings()
+        embedding = HuggingFaceEmbeddings(model_kwargs={"device": "cpu"})
 
         vector_store = Chroma(
             persist_directory = persist_directory,
