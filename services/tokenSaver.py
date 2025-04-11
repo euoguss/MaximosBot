@@ -2,7 +2,7 @@ import json
 import os
 
 def save_token(chat_id, token_data):
-    file_path = "tokens.json"
+    file_path = "data/tokens.json"
     
     if os.path.exists(file_path):
         with open(file_path, "r") as f:

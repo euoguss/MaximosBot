@@ -5,7 +5,7 @@ from services.calendar import CalendarService
 from services.login import NextCloudOAuth
 from bot.ai_bot import AIBot
 from services.tokenSaver import save_token, load_token
-from services.oauth_state import store_oauth_state, get_chat_id_by_state
+from services.oauthState import store_oauth_state, get_chat_id_by_state
 
 
 app= Flask(__name__)
@@ -77,5 +77,5 @@ def oauth_callback():
     return jsonify(token_data)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
 

@@ -17,7 +17,7 @@ class NextCloudOAuth():
         self.scope= ["openid"]
 
         self.base_url_internal = "http://nextcloud"
-        self.base_url_public = "http://localhost:8080"
+        self.base_url_public = "https://nuvem.codegus.space"
 
         self.session= OAuth2Session(
             self.client_id,

@@ -3,7 +3,7 @@ import requests
 class Waha:
 
     def __init__(self):
-        self.__api_url = "http://waha:3000"
+        self.__api_url = "http://waha.codegus.space"
 
     def send_message(self, chat_id, message):
         url = f"{self.__api_url}/api/sendText"

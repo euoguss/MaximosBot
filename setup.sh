@@ -15,16 +15,17 @@ if ! command -v docker-compose &> /dev/null; then
 fi
 
 echo "📁 Clonando o projeto do GitHub via HTTPS..."
-mkdir -p /opt/maximos_bot && cd /opt/maximos_bot
-git clone -b main https://github.com/euoguss/MaximosBot.git .
+cd /opt
+git clone -b main https://github.com/euoguss/MaximosBot.git
+cd MaximosBot
 
-echo "🔐 Certifique-se de que o arquivo .env foi criado com as variáveis necessárias."
-echo "   Use: scp .env root@srv788024.hstgr.cloud:/opt/maximos_bot/.env"
+echo "🔐 Copie seu .env com:"
+echo "   scp .env root@srv788024.hstgr.cloud:/opt/MaximosBot/.env"
 
 echo "🚀 Subindo containers com Docker Compose..."
 docker-compose up -d --build
 
-echo "✅ Tudo pronto! Acesse:"
+echo "✅ Tudo pronto!"
 echo "📦 Waha: http://srv788024.hstgr.cloud:3000"
 echo "🧠 API:  http://srv788024.hstgr.cloud:5000"
 
