@@ -1,3 +1,7 @@
+# Environment variables and secrets
+/.env
+.env.local
+.env.*
 
 
 # Dependencies
@@ -20,6 +24,7 @@ logs/
 npm-debug.log*
 
 # Build and distribution
+setup.sh
 dist/
 build/
 *.pyc
