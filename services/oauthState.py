@@ -1,17 +1,21 @@
 import json
 
-STATE_FILE = "oauth_state.json"
+STATE_FILE = "data/oauth_state.json"
 
-def store_oauth_state(chat_id, state):
+def save_oauth_state(chat_id, state):
     data = {}
     try:
         with open(STATE_FILE, "r") as file:
             data = json.load(file)
     except FileNotFoundError:
         pass
+    
+    keys_to_remove = [key for key, value in data.items() if value == chat_id]
+    for key in keys_to_remove:
+        del data[key]
 
     data[state] = chat_id
-
+    
     with open(STATE_FILE, "w") as file:
         json.dump(data, file, indent=2)
 
