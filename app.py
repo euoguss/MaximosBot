@@ -3,8 +3,7 @@ from services.waha import Waha
 from services.calendar import CalendarService
 from services.login import NextCloudOAuth
 from bot.ai_bot import AIBot
-from services.tokenSaver import save_token, load_token
-from services.oauthState import store_oauth_state, get_chat_id_by_state
+from services.auth_data import *
 
 app = Flask(__name__)
 
@@ -69,6 +68,7 @@ def oauth_callback():
     token_data = oauth.fetch_token(full_url)
     chat_id = get_chat_id_by_state(request.args.get("state"))
     save_token(chat_id, token_data)
+
     return jsonify(token_data)
 
 if __name__ == "__main__":
