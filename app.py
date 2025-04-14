@@ -10,6 +10,10 @@ from services.oauthState import store_oauth_state, get_chat_id_by_state
 
 app= Flask(__name__)
 
+@app.route("/")
+def index():
+    return "servidor subiu papai"
+
 @app.route("/chatbot/webhook/", methods=["POST"])
 def webhook():
     data= request.json
