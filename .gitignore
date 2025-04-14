@@ -3,6 +3,7 @@
 .env.local
 .env.*
 .env
+*env
 
 
 # Dependencies
@@ -48,3 +49,4 @@ coverage/
 # Temporary files
 tmp/
 temp/
+.env
