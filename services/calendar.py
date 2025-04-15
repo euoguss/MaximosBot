@@ -3,7 +3,7 @@ from caldav import DAVClient
 class CalendarService:
     def __init__(self, access_token):
         self.client = DAVClient(
-            url="http://nextcloud/remote.php/dav",
+            url="https://nuvem.codegus.space/remote.php/dav",
             headers={"Authorization": f"Bearer {access_token}"}
         )
         self.principal = self.client.principal()

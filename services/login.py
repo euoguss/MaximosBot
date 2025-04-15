@@ -12,8 +12,7 @@ class NextCloudOAuth:
         self.client_secret = config("NEXTCLOUD_CLIENT_SECRET")
         self.redirect_uri = config("REDIRECT_URI")
         self.scope = ["openid"]
-        self.base_url_internal = "http://nextcloud"
-        self.base_url_public = "https://nuvem.codegus.space"
+        self.base_url = "https://nuvem.codegus.space"
         self.session = OAuth2Session(
             self.client_id,
             redirect_uri=self.redirect_uri,
@@ -21,12 +20,12 @@ class NextCloudOAuth:
         )
 
     def get_authorization(self):
-        auth_url = f"{self.base_url_public}/apps/oauth2/authorize"
+        auth_url = f"{self.base_url}/apps/oauth2/authorize"
         full_url, state = self.session.authorization_url(auth_url)
         return full_url, state
 
     def fetch_token(self, full_callback_url):
-        token_url = f"{self.base_url_internal}/index.php/apps/oauth2/api/v1/token"
+        token_url = f"{self.base_url}/index.php/apps/oauth2/api/v1/token"
         parsed = urlparse(full_callback_url)
         code = parse_qs(parsed.query).get("code", [None])[0]
         if not code:
